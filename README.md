@@ -5,9 +5,21 @@
 ```sh
 git clone https://github.com/ogatakatsuya/Semi-A.git
 ```
-2. Build and Boot
+2. Navigate to the Project Directory
+```sh
+cd Semi-A
+```   
+3. Build and Boot
 ```sh
 docker compose up --build
+```
+4. Access the Application
+```sh
+http://localhost:3000
+```
+5. Stop the Application
+```sh
+docker compose down
 ```
 
 ## パッケージを追加するとき
@@ -18,6 +30,11 @@ docker container exec -it svelte_container sh
 npm install
 ```
 2. volumeを削除して再度ビルド
+volumeの名前を調べる．多分，semi-a_node_modulesかな？
+```sh
+docker volume ls
+```
+volume削除した再度ビルド
 ```sh
 docker volume rm {your volume name}
 docker compose up --build
