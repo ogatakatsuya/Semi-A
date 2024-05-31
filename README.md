@@ -29,7 +29,7 @@ docker compose down
 docker container exec -it svelte_container sh
 npm install
 ```
-2. volumeを削除して再度ビルド
+2. volumeを削除して再度ビルド  
 volumeの名前を調べる．多分，semi-a_node_modulesかな？
 ```sh
 docker volume ls
