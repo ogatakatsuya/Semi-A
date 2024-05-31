@@ -1,4 +1,31 @@
-# create-svelte
+# Semi-A
+
+## Usage
+
+## Usage
+1. Clone this repository
+```sh
+git clone https://github.com/ogatakatsuya/Semi-A.git
+```
+2. Build and Boot
+```sh
+docker compose up --build
+```
+
+## パッケージを追加するとき
+以下のいずれかで対応
+1. コンテナ内で直接インストール
+```sh
+docker container exec -it svelte_container sh
+npm install
+```
+2. volumeを削除して再度ビルド
+```sh
+docker volume rm {your volume name}
+docker compose up --build
+```
+
+## create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
@@ -36,4 +63,3 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-# Semi-A
