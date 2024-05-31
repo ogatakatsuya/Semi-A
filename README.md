@@ -1,8 +1,6 @@
 # Semi-A
 
 ## Usage
-
-## Usage
 1. Clone this repository
 ```sh
 git clone https://github.com/ogatakatsuya/Semi-A.git
