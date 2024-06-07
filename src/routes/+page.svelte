@@ -41,6 +41,10 @@
 		width: 100%;
 	}
 
+	h2 {
+		color: blue;
+	}
+
 	.welcome {
 		display: block;
 		position: relative;
