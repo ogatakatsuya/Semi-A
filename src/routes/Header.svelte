@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
+
+	//TODO: オリジナルのheaderの実装
 </script>
 
 <header>
