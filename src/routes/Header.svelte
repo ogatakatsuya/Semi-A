@@ -2,6 +2,8 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
+
+	//TODO: オリジナルのheaderの実装
 </script>
 
 <header>
@@ -19,11 +21,11 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
+			<li aria-current={$page.url.pathname === '/create' ? 'page' : undefined}>
+				<a href="/create">Create</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={$page.url.pathname.startsWith('/join') ? 'page' : undefined}>
+				<a href="/join">Join</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
@@ -32,7 +34,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
+		<a href="https://github.com/ogatakatsuya/Semi-A" target="blank">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>
