@@ -41,11 +41,10 @@
 <div class="text-column">
 	<h1 class="mb-4">Dynamic routing with Room ID</h1>
 	{#each commentList as comment}
-		<p>{comment.text}</p>
-		<!-- <div class="max-w-5xl rounded overflow-hidden shadow-lg w-3/4 my-4">
+		<div class="max-w-5xl rounded overflow-hidden shadow-lg w-3/4 my-4">
 			<div class="px-6 py-4">
 				<p class="font-bold text-xl mb-2">{comment.text}</p>
 			</div>
-		</div> -->
+		</div>
 	{/each}
 </div>
