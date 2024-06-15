@@ -19,6 +19,13 @@
 
 	const validateForm = () => {
 		//TODO: validation・passwordフィールドの工夫
+		let isCorrect = true;
+		errorMessage = "";
+		if(!roomName) { isCorrect = false; errorMessage += "roomName is empty.\n"; }
+		if(roomPassword.length < 6) { isCorrect = false; errorMessage += "roomPassword is less than 6 characters.\n"; }
+		if(!roomDescription) { isCorrect = false; errorMessage += "roomDescription is empty.\n"; }
+
+		if(!isCorrect) return false;
 		console.log(`form content posted: ${roomName} ${roomPassword} ${roomDescription}`)
 		return true;
 	}
