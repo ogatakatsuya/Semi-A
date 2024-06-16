@@ -4,6 +4,9 @@
 		collection,
 	} from "firebase/firestore";
 	import { db } from "$lib/firebase";
+	import { createForm } from 'felte';
+	import { validator } from '@felte/validator-yup';
+	import * as yup from 'yup';
 
 	type Room = {
 		id?: string;
@@ -15,16 +18,22 @@
 	let roomName: string = "";
 	let roomPassword: string = "";
 	let roomDescription: string = "";
-	let errorMessage: string = "";
 
-	const validateForm = () => {
-		//TODO: validation・passwordフィールドの工夫
-		console.log(`form content posted: ${roomName} ${roomPassword} ${roomDescription}`)
-		return true;
-	}
+	const schema = yup.object({
+		roomName: yup.string().required(),
+		roomPassword: yup.string().min(6, "password must be 6 characters long"),
+		roomDescription: yup.string().required(),
+	});
+
+	//felteフレームワークを使用した関係でvalidateForm関数ごと変えます
+	const { form, errors, isValid } = createForm({
+		extend: validator({ schema }),
+	})
+
 	const addRoom = async () => {
-		if(roomName == "") return;
-		if( validateForm() ){
+		if( $isValid ) {
+			console.log(`form content posted: ${roomName} ${roomPassword} ${roomDescription}`);
+
 			const room: Room = {
 				name: roomName,
 				password: roomPassword,
@@ -35,8 +44,6 @@
 			roomName = "";
 			roomPassword = "";
 			roomDescription = "";
-		} else {
-			console.log(errorMessage);
 		}
 	}
 </script>
