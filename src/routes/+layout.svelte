@@ -2,6 +2,7 @@
 	import Header from './Header.svelte';
 	import './styles.css';
 	import "../app.css";
+	//TODO　layout.svelteをオリジナルのものに
 </script>
 
 <div class="app">
