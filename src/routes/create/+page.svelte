@@ -4,6 +4,7 @@
 		collection,
 	} from "firebase/firestore";
 	import { db } from "$lib/firebase";
+	import { goto } from "$app/navigation";
 	import { createForm } from 'felte';
 	import { validator } from '@felte/validator-yup';
 	import * as yup from 'yup';
@@ -40,7 +41,16 @@
 				description: roomDescription,
 				exist: true,
 			};
-			await addDoc(collection(db, "Rooms"), room);
+			try {
+				const docRef = await addDoc(collection(db, "Rooms"), room);
+				const room_id = docRef.id;
+				goto(`/organizer/${room_id}`);
+				roomName = "";
+				roomPassword = "";
+				roomDescription = "";
+			} catch (e) {
+				console.error("Error adding document: ", e);
+			}
 			roomName = "";
 			roomPassword = "";
 			roomDescription = "";

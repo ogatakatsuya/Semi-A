@@ -3,6 +3,8 @@
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png'
 	import './styles.css';
+
+	//TODO: lpの作成
 </script>
 
 <svelte:head>
