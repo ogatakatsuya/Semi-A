@@ -15,6 +15,10 @@
 
 	$: room_id = $page.params.room_id;
 
+	const validateForm = () => {
+		return true
+	}
+
 	type Comment = {
 		id?: string;
 		text: string;
