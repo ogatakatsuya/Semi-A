@@ -26,6 +26,7 @@
 		(snapshot: QuerySnapshot): any => {
 			roomList = snapshot.docs.map(doc => {
 				const data = doc.data();
+				console.log(data)
 				const item: Room = {
 					id: doc.id,
 					name: data.name,
@@ -56,6 +57,7 @@
 
 <div class="text-column">
 	<h1>Let's join presentation room!</h1>
+	
 	{#each roomList as room}
 		<div class="max-w-5xl rounded overflow-hidden shadow-lg w-3/4 my-4">
 			<div class="px-6 py-4">
