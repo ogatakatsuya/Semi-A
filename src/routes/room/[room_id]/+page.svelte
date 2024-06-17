@@ -5,6 +5,9 @@
 	} from "firebase/firestore";
 	import { db } from "$lib/firebase";
 	import { page } from "$app/stores";
+	import { createForm } from 'felte';
+	import { validator } from '@felte/validator-yup';
+	import * as yup from 'yup';
 
 	let text: string = "";
 	let room_id: string = "";
@@ -17,11 +20,6 @@
 		text: string;
 		room_id: string;
 	}
-
-	const validateForm = () => {
-		return true
-	}
-
 	const addComment = async () => {
 		if(text == "") return;
 		if( validateForm() ){
