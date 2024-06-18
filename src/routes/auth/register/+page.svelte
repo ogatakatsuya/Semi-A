@@ -3,7 +3,7 @@
 		addDoc,
 		collection,
 	} from "firebase/firestore";
-	import { createUserWithEmailAndPassword } from "firebase/auth";
+	import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 	import { db, auth } from "$lib/firebase";
 	import { goto } from "$app/navigation";
 	import { createForm } from 'felte';
@@ -13,20 +13,18 @@
 	let email: string = "";
 	let password: string = "";
 
-	const submitHandler = async () => {
-		await createUserWithEmailAndPassword(auth, email, password)
-		.then((userCredential) => {
-			// Signed in 
+	const submitHandler = async (event: Event) => {
+		event.preventDefault();
+		try {
+			const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 			const user = userCredential.user;
-			console.log(user);
+			await sendEmailVerification(user);
 			email = "";
 			password = "";
-			goto("/auth/login")
-			// ...
-		})
-		.catch((error) => {
+			goto("/auth/confirm");
+		} catch (error) {
 			alert(error);
-		});
+		}
 	}
 
 </script>
@@ -37,7 +35,7 @@
 </svelte:head>
 
 <section class="text-column">
-	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
 		<div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
 			<div class="p-6 my-4">
 				<h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
