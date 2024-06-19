@@ -22,6 +22,8 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
+		/* background-color: #f9f9f9;
+		color: #333; */
 	}
 
 	main {
@@ -41,6 +43,8 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
+		/* background-color: #333;
+		color: white; */
 	}
 
 	footer a {
