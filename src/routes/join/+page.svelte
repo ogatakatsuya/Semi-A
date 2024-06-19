@@ -63,7 +63,7 @@
 			<div class="hidden sm:block flex-shrink-0">
 				<img class="object-cover sm:w-full sm:h-48 w-24 h-full" src="{neon1}" alt="">
 			</div>
-			<div class="flex sm:flex-col flex-row justify-between flex-1 p-6 pr-14 bg-white relative">
+			<div class="flex sm:flex-col flex-row justify-between flex-1 p-6 sm:pr-6 pr-14 bg-white relative">
 				<div class="flex-1">
 					<p class="text-xl font-semibold text-neutral-600">{room.name}</p>
 					<p class="mt-3 text-base text-gray-500">{room.description}</p>
