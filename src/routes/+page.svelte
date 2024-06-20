@@ -1,4 +1,7 @@
 <script lang="ts">
+	import ResultsFeature from './ResultFeature.svelte';
+	import CommentFeature from './CommentFeature.svelte';
+	import PresenroomFeature from './sverdle/PresenroomFeature.svelte';
 	import Counter from './Counter.svelte';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png'
@@ -8,136 +11,122 @@
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Real-Time Voting App</title>
+	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
 </svelte:head>
 
 <div class=" pb-6 sm:pb-8 lg:pb-12">
-	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-	  <header class="mb-8 flex items-center justify-between py-4 md:mb-12 md:py-8 xl:mb-16">
-		<!-- logo - start -->
-		<a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
-		  <svg width="95" height="94" viewBox="0 0 95 94" class="h-auto w-6 text-indigo-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			<path d="M96 0V47L48 94H0V47L48 0H96Z" />
-		  </svg>
+	<div class="mx-auto max-w-screen-2xl px-4 md:px-8 gap -6 sm:gap-10 md:gap-16">
+		<section class="flex flex-col  lg:flex-row lg:items-center " style=" margin-bottom: 0;">
+			<!-- image - start -->
+			<div class="overflow-hidden rounded-lg lg:h-auto xl:w-full flex justify-center" >
+				<img src="https://tyoudoii-illust.com/download/2057/?tmstv=1718888865" loading="lazy" alt="Photo by Fakurian Design" class="h-full w-full object-cover object-center"/>
+			  </div>
+			<!-- image - end -->
+
+			<!-- content - start -->
+			<div class="flex flex-col justify-center items-center sm:text-center lg:py-12 lg:text-left xl:w-full  xl:py-24">
+			  
+			  <h1 class="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl text-left break-words lg:w-full">プレゼン<br>支援ツール<br>"Presen+"</h1>
+
+			  <p class="mb-8 leading-relaxed text-gray-800 md:mb-12  xl:text-lg text-cleft break-words ">
+				Presen+は、パスワード制のプレゼンルーム作成、<br>
+				リアルタイム質問・結果表示、<br>
+				コメントの投稿・消去・強調表示機能を提供。<br>
+				参加者の声をダイナミックに反映した<br>次世代プレゼン体験を実現します。
+			</p>
+	
+			</div>
+			<!-- content - end -->
+		</section>
+
+		<!--この下はボタン,,ボタンの上の余白消したいなあ-->
+		<section class="flex justify-center items-start  text-4xl" >
+		<div class="flex flex-col  sm:flex-row sm:justify-center lg:flex-row" >
+			<a href="/create" class="inline-block rounded-lg bg-indigo-500 px-20 py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"style="font-size: 30px;">今すぐ体験</a>
+			</div>
+		</section>
+
+	</div>
   
-		  Flowrift
-		</a>
-		<!-- logo - end -->
-  
-		<!-- nav - start -->
-		<nav class="hidden gap-12 lg:flex">
-		  <a href="#" class="text-lg font-semibold text-indigo-500">Home</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Features</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Pricing</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">About</a>
-		</nav>
-		<!-- nav - end -->
-  
-		<!-- buttons - start -->
-		<a href="#" class="hidden rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block">Contact Sales</a>
-  
-		<button type="button" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden">
-		  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-			<path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-		  </svg>
-  
-		  Menu
-		</button>
-		<!-- buttons - end -->
-	  </header>
-  
-	  <section class="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
-		<!-- content - start -->
-		<div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
-		  <p class="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Very proud to introduce</p>
-  
-		  <h1 class="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl">Revolutionary way to build the web</h1>
-  
-		  <p class="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:w-4/5 xl:text-lg">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random.</p>
-  
-		  <div class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-			<a href="#" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Start now</a>
-  
-			<a href="#" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">Take tour</a>
+
+	<!--この下は機能紹介-->
+	<div class="py-6 sm:py-8 lg:py-12">
+		<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+		  <div class="mb-6 flex items-end justify-between gap-4">
+			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~魅力的な３つの機能~</h2>
+		  </div>
+	  
+		  <div class="grid gap-x-4 gap-y-6 sm:grid-cols-2 md:gap-x-6  lg:flex justify-center">
+			
+	  
+			<!-- product - start -->
+			<div >
+			  <a href="#PresenroomFeature" class="group mb-2 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3">
+				<img src="https://illustration-free.net/thumb/png/ifn1208.png" loading="lazy" alt="Photo by engin akyurt" class="h-80 w-80 object-cover rounded-lg object-center transition duration-200 group-hover:scale-110" />
+			  </a>
+	  
+			  <div class="flex flex-col">
+				<span class="text-lg text-gray-500 text-center">その１</span>
+				<a href="#PresenroomFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">パスワード制の<br>プレゼンルーム作成</a>
+			  </div>
+			</div>
+			<!-- product - end -->
+	  
+			<!-- product - start -->
+			<div >
+				<a href="#ResultsFeature" class="group mb-2 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3">
+				  <img src="https://iconbox.fun/wp/wp-content/uploads/1108_sy_m.png" loading="lazy" alt="Photo by engin akyurt" class="h-80 w-80 object-cover rounded-lg object-center transition duration-200 group-hover:scale-110" />
+				</a>
+		
+				<div class="flex flex-col">
+					<span class="text-lg text-gray-500 text-center">その２</span>
+					<a href="#ResultsFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>質問・結果表示</a>
+				  </div>
+			  </div>
+			  <!-- product - end -->
+	  
+			<!-- product - start -->
+			<div >
+				<a href="#CommentFeature" class="group mb-2 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:mb-3">
+				  <img src="https://iconbox.fun/wp/wp-content/uploads/1111_sy_m.png" loading="lazy" alt="Photo by engin akyurt" class="h-80 w-80 object-cover rounded-lg object-center transition duration-200 group-hover:scale-110" />
+				</a>
+		
+				<div class="flex flex-col">
+				  <span class="text-lg text-gray-500 text-center">その３</span>
+				  <a href="#CommentFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>コメント投稿・表示</a>
+				</div>
+			  </div>
+			  <!-- product - end -->
 		  </div>
 		</div>
-		<!-- content - end -->
-  
-		<!-- image - start -->
-		<div class="h-48 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:h-auto xl:w-5/12">
-		  <img src="https://images.unsplash.com/photo-1618004912476-29818d81ae2e?auto=format&q=75&fit=crop&w=1000" loading="lazy" alt="Photo by Fakurian Design" class="h-full w-full object-cover object-center" />
-		</div>
-		<!-- image - end -->
-	  </section>
-	</div>
-  </div>
+	  </div>
 
-<div class="bg-white pb-6 sm:pb-8 lg:pb-12">
+
+<section class="py-6 sm:py-8 lg:py-12">
 	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-	  <header class="mb-8 flex items-center justify-between py-4 md:mb-12 md:py-8 xl:mb-16">
-		<!-- logo - start -->
-		<a href="/" class="inline-flex items-center gap-2.5 text-2xl font-bold text-black md:text-3xl" aria-label="logo">
-		  <svg width="95" height="94" viewBox="0 0 95 94" class="h-auto w-6 text-indigo-500" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-			<path d="M96 0V47L48 94H0V47L48 0H96Z" />
-		  </svg>
-  
-		  Flowrift
-		</a>
-		<!-- logo - end -->
-  
-		<!-- nav - start -->
-		<nav class="hidden gap-12 lg:flex">
-		  <a href="#" class="text-lg font-semibold text-indigo-500">Home</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Features</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">Pricing</a>
-		  <a href="#" class="text-lg font-semibold text-gray-600 transition duration-100 hover:text-indigo-500 active:text-indigo-700">About</a>
-		</nav>
-		<!-- nav - end -->
-  
-		<!-- buttons - start -->
-		<a href="#" class="hidden rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:inline-block">Contact Sales</a>
-  
-		<button type="button" class="inline-flex items-center gap-2 rounded-lg bg-gray-200 px-2.5 py-2 text-sm font-semibold text-gray-500 ring-indigo-300 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base lg:hidden">
-		  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-			<path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-		  </svg>
-  
-		  Menu
-		</button>
-		<!-- buttons - end -->
-	  </header>
-  
-	  <section class="flex flex-col justify-between gap-6 sm:gap-10 md:gap-16 lg:flex-row">
-		<!-- content - start -->
-		<div class="flex flex-col justify-center sm:text-center lg:py-12 lg:text-left xl:w-5/12 xl:py-24">
-		  <p class="mb-4 font-semibold text-indigo-500 md:mb-6 md:text-lg xl:text-xl">Very proud to introduce</p>
-  
-		  <h1 class="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl">Revolutionary way to build the web</h1>
-  
-		  <p class="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:w-4/5 xl:text-lg">This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of a real written text but is random.</p>
-  
-		  <div class="flex flex-col gap-2.5 sm:flex-row sm:justify-center lg:justify-start">
-			<a href="#" class="inline-block rounded-lg bg-indigo-500 px-8 py-3 text-center text-sm font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base">Start now</a>
-  
-			<a href="#" class="inline-block rounded-lg bg-gray-200 px-8 py-3 text-center text-sm font-semibold text-gray-500 outline-none ring-indigo-300 transition duration-100 hover:bg-gray-300 focus-visible:ring active:text-gray-700 md:text-base">Take tour</a>
-		  </div>
+		<div class="mb-6 flex items-end justify-between gap-4">
+			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~機能詳細~</h2>
 		</div>
-		<!-- content - end -->
-  
-		<!-- image - start -->
-		<div class="h-48 overflow-hidden rounded-lg bg-gray-100 shadow-lg lg:h-auto xl:w-5/12">
-		  <img src="https://images.unsplash.com/photo-1618004912476-29818d81ae2e?auto=format&q=75&fit=crop&w=1000" loading="lazy" alt="Photo by Fakurian Design" class="h-full w-full object-cover object-center" />
-		</div>
-		<!-- image - end -->
-	  </section>
+
+		<section id="PresenroomFeature">
+			<PresenroomFeature/>
+		</section>
+
+		<section id="ResultsFeature">
+			<ResultsFeature/> 
+		</section>
+
+		<section id="CommentFeature">
+			<CommentFeature />
+		</section>
+
 	</div>
-  </div>
+</section>
 
-
-
+</div>
 <style>
-	section {
+	.LP {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -150,7 +139,8 @@
 	}
 
 	h2 {
-		color: blue;
+		font-size: 2.0rem;
+		color: rgb(185, 24, 24);
 	}
 
 	.welcome {
@@ -168,4 +158,5 @@
 		top: 0;
 		display: block;
 	}
+	
 </style>
