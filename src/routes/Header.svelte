@@ -59,7 +59,7 @@
 			</Content>
 			</Panel>
 		</Accordion>
-		</div>
+	</div>
 	  
 	<script lang="ts">
 		import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
