@@ -28,6 +28,7 @@
 				<a href="/join">Join</a>
 			</li>
 			<!-- "about" の追加 -->
+			<!-- "about"の中身は，「./about/+page.svelte」に記載 -->
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
