@@ -3,10 +3,12 @@
         collection,
         onSnapshot,
         query,
-        QuerySnapshot
+        QuerySnapshot,
+		addDoc
     } from "firebase/firestore";
 	import { db } from "$lib/firebase";
 	import { page } from "$app/stores";
+	import Modal from "./_components/Modal.svelte";
 
 	type Comment = {
 		id: string;
@@ -14,8 +16,40 @@
 		room_id: string;
 	}
 
+	type Question = {
+		id?: string;
+		text: string;
+		options: string[];
+	}
+
 	let commentList: Comment[] = [];
-	let room_id : string = $page.params.room_id;
+	const room_id: string = $page.params.room_id;
+	let question = '';
+	let showModal = false;
+	let options = [''];
+
+	function addOption() {
+		options = [...options, ''];
+	}
+
+	function removeOption(index: number) {
+        options = options.filter((_, i) => i !== index);
+    }
+
+	const addQuestion = async () => {
+		const questionData: Question = {
+			text: question,
+			options: options,
+		};
+		try {
+			await addDoc(collection(db, `Rooms/${room_id}/Questions`), questionData);
+			showModal = false;
+			question = '';
+			options = [''];
+		} catch (e) {
+			console.error("Error adding document: ", e);
+		}
+	}
 
 	onSnapshot(
 		query(collection(db, `/Rooms/${room_id}/Comments`)),
@@ -47,4 +81,49 @@
 			</div>
 		</div>
 	{/each}
+	<button 
+	type="submit" 
+	on:click={() => showModal = true}
+	class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+		Let's discussion!
+	</button>
+	{#if showModal}
+    <Modal bind:showModal={showModal}>
+        <label for="inputQuestion" class="mt-4">Input Question</label>
+        <input bind:value={question} type="text" placeholder="Question" id="inputQuestion" class="my-6 bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5">
+        
+        <label for="inputOptions">Input Options</label>
+        {#each options as option, index}
+            <div class="flex items-center my-6">
+                <input 
+                    type="text" 
+                    placeholder={`Option${index + 1}`} 
+                    class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5"
+                    bind:value={options[index]}
+                >
+                <button 
+                    class="ml-2 text-red-600 hover:text-red-800"
+                    on:click={() => removeOption(index)}
+                >
+                    ➖
+                </button>
+            </div>
+        {/each}
+        <div>
+			<button 
+				class="ml-2 text-blue-600 hover:text-blue-800"
+				on:click={addOption}
+			>
+				➕
+			</button>
+		</div>
+        
+        <button 
+			on:click={addQuestion}
+            class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+            Submit
+        </button>
+    </Modal>
+{/if}
 </div>
