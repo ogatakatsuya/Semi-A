@@ -2,130 +2,141 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
-
-	//TODO: オリジナルのheaderの実装
 </script>
 
 <header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+	<div class="header-container">
+		<div class="logo-container">
+			<a>
+				<img src={logo} alt="SvelteKit" class="logo" />
+			</a>
+		</div>
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/create' ? 'page' : undefined}>
-				<a href="/create">Create</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/join') ? 'page' : undefined}>
-				<a href="/join">Join</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+		<div class="size_test">
+			Presen+
+		</div>
 
-	<div class="corner">
-		<a href="https://github.com/ogatakatsuya/Semi-A" target="blank">
-			<img src={github} alt="GitHub" />
-		</a>
+		<nav>
+			<ul>
+				<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
+					<a href="/">Home</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/create' ? 'page' : undefined}>
+					<a href="/create">Create</a>
+				</li>
+				<li aria-current={$page.url.pathname.startsWith('/join') ? 'page' : undefined}>
+					<a href="/join">Join</a>
+				</li>
+				<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
+					<a href="/about">About</a>
+				</li>
+			</ul>
+		</nav>
 	</div>
 </header>
 
 <style>
+	:root {
+		--background-color: #ffffff;
+		--hover-color: #f0f0f0;
+		--border-color: #e0e0e0;
+		--text-color: #333;
+		--hover-text-color: #0070f3;
+		--button-bg-color: #ff6600;
+		--button-text-color: #ffffff;
+		--button-hover-bg-color: #cc5200;
+	}
+
 	header {
+		width: 100%;
+		background-color: var(--background-color);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.size_test {
+		font-size: 2vw;     /* 文字サイズ指定 */
+		font-weight: bold;  /* 太字指定 */
+	}
+
+	.header-container {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem;
 	}
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
+	.logo-container {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
 	}
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
+	.logo-container img {
+		width: 2rem; /* ロゴのサイズをLoginボタンに合わせて小さく */
+		height: auto;
 	}
 
 	nav {
+		flex: 1;
 		display: flex;
 		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
 	}
 
 	ul {
-		position: relative;
+		display: flex;
+		list-style: none;
 		padding: 0;
 		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
 	}
 
 	li {
-		position: relative;
-		height: 100%;
+		margin: 0 1rem;
 	}
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
+	li[aria-current='page'] a {
+		border-bottom: 2px solid var(--hover-text-color);
 	}
 
 	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
+		color: var(--text-color);
 		font-weight: 700;
-		font-size: 0.8rem;
 		text-transform: uppercase;
-		letter-spacing: 0.1em;
 		text-decoration: none;
-		transition: color 0.2s linear;
+		padding: 0.5rem 0;
+		transition: color 0.3s ease, border-bottom 0.3s ease;
 	}
 
-	a:hover {
-		color: var(--color-theme-1);
+	nav a:hover {
+		color: var(--hover-text-color);
+	}
+
+	.action-buttons {
+		display: flex;
+		align-items: center;
+	}
+
+	.btn {
+		background-color: var(--button-bg-color);
+		color: var(--button-text-color);
+		padding: 0.5rem 1rem;
+		text-decoration: none;
+		border-radius: 4px;
+		margin-left: 1rem;
+		transition: background-color 0.3s ease;
+	}
+
+	.btn:hover {
+		background-color: var(--button-hover-bg-color);
+	}
+
+	.btn.login {
+		background-color: var(--hover-color);
+		color: var(--text-color);
+	}
+
+	.btn.login:hover {
+		background-color: var(--hover-text-color);
+		color: var(--button-text-color);
 	}
 </style>
