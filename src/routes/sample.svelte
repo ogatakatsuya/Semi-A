@@ -2,8 +2,6 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
-
-	//TODO: オリジナルのheaderの実装
 </script>
 
 <header>
@@ -12,7 +10,7 @@
 			<img src={logo} alt="SvelteKit" />
 		</a>
 	</div>
-
+	
 	<nav>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
@@ -27,7 +25,6 @@
 			<li aria-current={$page.url.pathname.startsWith('/join') ? 'page' : undefined}>
 				<a href="/join">Join</a>
 			</li>
-			<!-- "about" の追加 -->
 			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
 				<a href="/about">About</a>
 			</li>
@@ -48,6 +45,8 @@
 	header {
 		display: flex;
 		justify-content: space-between;
+		background-color: #333;
+		padding: 1em;
 	}
 
 	.corner {
@@ -120,7 +119,7 @@
 		height: 100%;
 		align-items: center;
 		padding: 0 0.5rem;
-		color: var(--color-text);
+		color: white;
 		font-weight: 700;
 		font-size: 0.8rem;
 		text-transform: uppercase;

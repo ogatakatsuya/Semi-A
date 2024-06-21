@@ -1,0 +1,12 @@
+1. ローカルで作業ブランチを作成
+    git checkout -b <ブランチ名>
+2. ローカルで実装
+3. ローカルの変更をコミット
+    git add -A
+    git commit -m "message"
+4. mainブランチに戻ってリモートの最新状態をpull
+    git pull origin main
+5. リモートのブランチにpush
+    git push origin <ブランチ名>
+6. GitHub上でPRを作成してレビューを依頼
+7. レビューに通ったらmainにマージ
