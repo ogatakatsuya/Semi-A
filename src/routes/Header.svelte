@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	import logo from '$lib/images/Logo_onlytext_mini.png';
 	import github from '$lib/images/github.svg';
 </script>
 
@@ -10,10 +10,6 @@
 			<a>
 				<img src={logo} alt="SvelteKit" class="logo" />
 			</a>
-		</div>
-
-		<div class="size_test">
-			Presen+
 		</div>
 
 		<nav>
@@ -53,11 +49,6 @@
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
-	.size_test {
-		font-size: 2vw;     /* 文字サイズ指定 */
-		font-weight: bold;  /* 太字指定 */
-	}
-
 	.header-container {
 		display: flex;
 		justify-content: space-between;
@@ -73,7 +64,7 @@
 	}
 
 	.logo-container img {
-		width: 2rem; /* ロゴのサイズをLoginボタンに合わせて小さく */
+		width: 10rem; /* ロゴのサイズを変更 */
 		height: auto;
 	}
 
