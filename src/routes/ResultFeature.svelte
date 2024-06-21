@@ -18,15 +18,16 @@
 	.feature h3 {
 		font-size: 1.75rem;
 		color: #0056b3;
+		font-weight: bolder;
 	}
 
     .feature h4 {
 		font-size: 1.25rem;
-		color: #666;
+		color: #000;
 	}
 
 	.feature p {
 		font-size: 1rem;
-		color: #666;
+		color: #000;
 	}
 </style>
