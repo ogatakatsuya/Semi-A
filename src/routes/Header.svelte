@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
+	import logo from '$lib/images/Logo_onlytext_mini.png';
 	import github from '$lib/images/github.svg';
 </script>
 
@@ -73,7 +73,7 @@
 	}
 
 	.logo-container img {
-		width: 2rem; /* ロゴのサイズをLoginボタンに合わせて小さく */
+		width: 7rem; /* ロゴのサイズを変更 */
 		height: auto;
 	}
 
