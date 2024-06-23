@@ -7,13 +7,9 @@
 <header>
 	<div class="header-container">
 		<div class="logo-container">
-			<a>
+			<a href="/">
 				<img src={logo} alt="SvelteKit" class="logo" />
 			</a>
-		</div>
-
-		<div class="size_test">
-			Presen+
 		</div>
 
 		<nav>
@@ -37,10 +33,10 @@
 
 <style>
 	:root {
-		--background-color: #ffffff;
+		--background-color: #1E1F23;
 		--hover-color: #f0f0f0;
 		--border-color: #e0e0e0;
-		--text-color: #333;
+		--text-color: #E5E1D3;
 		--hover-text-color: #0070f3;
 		--button-bg-color: #ff6600;
 		--button-text-color: #ffffff;
@@ -73,7 +69,7 @@
 	}
 
 	.logo-container img {
-		width: 7rem; /* ロゴのサイズを変更 */
+		width: 14rem; /* ロゴのサイズを変更 */
 		height: auto;
 	}
 
