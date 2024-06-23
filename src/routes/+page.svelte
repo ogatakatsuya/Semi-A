@@ -2,12 +2,24 @@
 	import ResultsFeature from './ResultFeature.svelte';
 	import CommentFeature from './CommentFeature.svelte';
 	import PresenroomFeature from './sverdle/PresenroomFeature.svelte';
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png'
 	import './styles.css';
+	import { fade, blur } from 'svelte/transition';
+  	import { onMount } from 'svelte';
 
-	//TODO: lpの作成
+	let showIntro = true;
+	let showContent = false;
+
+	onMount(() => {
+		setTimeout(() => {
+		showIntro = false;
+		setTimeout(() => {
+			showContent = true;
+		}, 500); // 少し遅延を入れて、イントロが消えてから本体を表示
+		}, 2000); // 2秒後にイントロを非表示に
+	});
+
+
+
 </script>
 
 <svelte:head>
@@ -158,5 +170,7 @@
 		top: 0;
 		display: block;
 	}
+
+	
 	
 </style>
