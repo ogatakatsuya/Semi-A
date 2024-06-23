@@ -26,7 +26,7 @@
 		(snapshot: QuerySnapshot): any => {
 			commentList = snapshot.docs.map((doc: any) => {
 				const data = doc.data();
-				const past = (data.time.seconds*1000 - now < 0) ? false : true;
+				const past = (data.time.seconds*1000 - now > 0) ? false : true;
 				const item: Comment = {
 					id: doc.id,
 					text: data.text,
@@ -49,7 +49,7 @@
 
 <div class="w-full absolute overflow-x-hidden inset-y-20 inset-x-0">
 {#each commentList as comment (comment.id)}
-	{#if comment.past}
+	{#if !comment.past}
 		<FlowingComment text={comment.text}/>
 	{/if}
 {/each}
