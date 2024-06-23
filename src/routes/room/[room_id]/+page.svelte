@@ -15,7 +15,6 @@
 
 	let text: string = "";
 	let room_id: string = "";
-	let time: Date;
 
 	$: room_id = $page.params.room_id;
 
@@ -31,18 +30,14 @@
 		id?: string;
 		text: string;
 		room_id: string;
-		time: Date;
 	}
-
 	const addComment = async () => {
-		time = new Date();
 		setFields( {comment: text} );
 		await validate();
 		if( $isValid ){
 			const comment: Comment = {
 				text : text,
-				room_id : room_id,
-				time : time,
+				room_id : room_id, 
 			};
 			try {
 				const docRef = await addDoc(collection(db, `Rooms/${room_id}/Comments`), comment);
