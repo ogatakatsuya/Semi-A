@@ -11,7 +11,7 @@
 </script>
 
 <svelte:head>
-	<title>Real-Time Voting App</title>
+	<title>Presen+</title>
 	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
 </svelte:head>
 
@@ -41,9 +41,9 @@
 		</section>
 
 		<!--この下はボタン,,ボタンの上の余白消したいなあ-->
-		<section class="flex justify-center items-start  text-4xl" >
-		<div class="flex flex-col  sm:flex-row sm:justify-center lg:flex-row" >
-			<a href="/create" class="inline-block rounded-lg bg-indigo-500 px-20 py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"style="font-size: 30px;">今すぐ体験</a>
+		<section class="flex justify-center items-start  text-4xl mb-12" >
+			<div class="flex flex-col  sm:flex-row sm:justify-center lg:flex-row" >
+				<a href="/create" class="inline-block rounded-lg bg-indigo-500 px-20 py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"style="font-size: 30px;">今すぐ体験</a>
 			</div>
 		</section>
 
@@ -82,8 +82,8 @@
 				<div class="flex flex-col">
 					<span class="text-lg text-gray-500 text-center">その２</span>
 					<a href="#ResultsFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>質問・結果表示</a>
-				  </div>
-			  </div>
+				</div>
+			</div>
 			  <!-- product - end -->
 	  
 			<!-- product - start -->
@@ -96,29 +96,35 @@
 				  <span class="text-lg text-gray-500 text-center">その３</span>
 				  <a href="#CommentFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>コメント投稿・表示</a>
 				</div>
-			  </div>
+			</div>
 			  <!-- product - end -->
 		  </div>
 		</div>
-	  </div>
+	</div>
 
 
 <section class="py-6 sm:py-8 lg:py-12">
 	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 		<div class="mb-6 flex items-end justify-between gap-4">
-			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~機能詳細~</h2>
+			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~機能~</h2>
 		</div>
 
-		<section id="PresenroomFeature">
-			<PresenroomFeature/>
+		<section class = "feature" id="PresenroomFeature">
+			<h3>プレゼンルームの作成機能</h3>
+		    <h4>セキュアなプレゼン体験を</h4>
+			<a href="./about#PresenroomFeature">詳細はこちら</a>
 		</section>
 
-		<section id="ResultsFeature">
-			<ResultsFeature/> 
+		<section class = "feature" id="ResultsFeature">
+			<h3>投票結果の表示機能</h3>
+            <h4>インタラクティブな投票結果の表示を</h4>
+			<a href="./about#ResultFeature">詳細はこちら</a>
 		</section>
 
-		<section id="CommentFeature">
-			<CommentFeature />
+		<section class = "feature" id="CommentFeature">
+			<h3>コメント投稿・表示機能</h3>
+			<h4>ダイナミックなコメント機能を</h4>
+			<a href="./about#CommentFeature">詳細はこちら</a>
 		</section>
 
 	</div>
@@ -158,5 +164,18 @@
 		top: 0;
 		display: block;
 	}
-	
+	.feature {
+		margin-bottom: 1.5rem;
+	}
+
+	.feature h3 {
+		font-size: 1.75rem;
+		color: #0056b3;
+		font-weight: bolder;
+	}
+
+    .feature h4 {
+		font-size: 1.25rem;
+		color: #000;
+	}
 </style>
