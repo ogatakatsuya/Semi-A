@@ -14,6 +14,7 @@
     import { tick } from "svelte";
 
     let text: string = "";
+	let time: Date;
 
     // Reactive assignment
     const room_id: string = $page.params.room_id;
@@ -26,12 +27,6 @@
         extend: validator({ schema }),
     });
 
-    type Comment = {
-        id?: string;
-        text: string;
-        room_id: string;
-    }
-
     type Question = {
         id?: string;
         text: string;
@@ -39,24 +34,6 @@
     }
 
     let questions: Question[] = [];
-
-    const addComment = async () => {
-        setFields({ comment: text });
-        const validationResult = await validate();
-
-        if (validationResult.valid) {
-            const comment: Comment = {
-                text: text,
-                room_id: room_id,
-            };
-            try {
-                await addDoc(collection(db, `Rooms/${room_id}/Comments`), comment);
-                text = "";
-            } catch (e) {
-                console.error("Error adding document: ", e);
-            }
-        }
-    }
 
     onSnapshot(
         query(collection(db, `/Rooms/${room_id}/Questions`)),
@@ -72,6 +49,31 @@
             });
         }
     );
+	type Comment = {
+		id?: string;
+		text: string;
+		room_id: string;
+		time: Date;
+	}
+
+	const addComment = async () => {
+		time = new Date();
+		setFields( {comment: text} );
+		await validate();
+		if( $isValid ){
+			const comment: Comment = {
+				text : text,
+				room_id : room_id,
+				time : time,
+			};
+			try {
+				const docRef = await addDoc(collection(db, `Rooms/${room_id}/Comments`), comment);
+				text = "";
+			} catch (e) {
+				console.error("Error adding document: ", e);
+			}
+		}
+	}
 </script>
 
 <svelte:head>
