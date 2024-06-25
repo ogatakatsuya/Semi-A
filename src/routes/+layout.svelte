@@ -6,6 +6,11 @@
 	//TODO　layout.svelteをオリジナルのものに
 </script>
 
+<svelte:head>
+	<title>Real-Time Voting App</title>
+	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
+</svelte:head>
+
 <div class="app">
 	<Header />
 
