@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Header from './Header.svelte';
+	import Footer from './Footer.svelte';
 	import './styles.css';
 	import "../app.css";
 	//TODO　layout.svelteをオリジナルのものに
@@ -12,9 +13,7 @@
 		<slot />
 	</main>
 
-	<footer>
-		<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
-	</footer>
+	<Footer />
 </div>
 
 <style>
@@ -22,8 +21,6 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-		/* background-color: #f9f9f9;
-		color: #333; */
 	}
 
 	main {
@@ -34,6 +31,7 @@
 		width: 100%;
 		margin: 0 auto;
 		box-sizing: border-box;
+		min-height: calc(100vh + 100px); /* ここを変更 */
 	}
 
 	footer {
@@ -42,8 +40,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
-		/* background-color: #333;
-		color: white; */
 	}
 
 	footer a {

@@ -3,21 +3,7 @@
 	import CommentFeature from './CommentFeature.svelte';
 	import PresenroomFeature from './sverdle/PresenroomFeature.svelte';
 	import './styles.css';
-	import { fade, blur } from 'svelte/transition';
-  	import { onMount } from 'svelte';
-
-	let showIntro = true;
-	let showContent = false;
-
-	onMount(() => {
-		setTimeout(() => {
-		showIntro = false;
-		setTimeout(() => {
-			showContent = true;
-		}, 500); // 少し遅延を入れて、イントロが消えてから本体を表示
-		}, 2000); // 2秒後にイントロを非表示に
-	});
-
+	
 
 
 </script>
@@ -41,7 +27,7 @@
 			  
 			  <h1 class="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl text-left break-words lg:w-full">プレゼン<br>支援ツール<br>"Presen+"</h1>
 
-			  <p class="mb-8 leading-relaxed text-gray-800 md:mb-12  xl:text-lg text-cleft break-words ">
+			  <p class="mb-8 leading-relaxed text-gray-800 md:mb-12  xl:text-lg text-left break-words lg:w-full ">
 				Presen+は、パスワード制のプレゼンルーム作成、<br>
 				リアルタイム質問・結果表示、<br>
 				コメントの投稿・消去・強調表示機能を提供。<br>
