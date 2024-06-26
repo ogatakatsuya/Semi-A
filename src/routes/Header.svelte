@@ -7,13 +7,9 @@
 <header>
 	<div class="header-container">
 		<div class="logo-container">
-			<a>
+			<a href="/">
 				<img src={logo} alt="SvelteKit" class="logo" />
 			</a>
-		</div>
-
-		<div class="size_test">
-			Presen+
 		</div>
 
 		<nav>
@@ -37,10 +33,10 @@
 
 <style>
 	:root {
-		--background-color: #ffffff;
+		--background-color: #1E1F23;
 		--hover-color: #f0f0f0;
 		--border-color: #e0e0e0;
-		--text-color: #333;
+		--text-color: #E5E1D3;
 		--hover-text-color: #0070f3;
 		--button-bg-color: #ff6600;
 		--button-text-color: #ffffff;
@@ -53,45 +49,42 @@
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	}
 
-	.size_test {
-		font-size: 2vw;     /* 文字サイズ指定 */
-		font-weight: bold;  /* 太字指定 */
-	}
-
 	.header-container {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		align-items: center;
-		max-width: 1200px;
-		margin: 0 auto;
+		width: 100%;
 		padding: 1rem;
+		position: relative;
 	}
 
 	.logo-container {
-		display: flex;
-		align-items: center;
+		position: absolute;
+		left: 1rem;
+		top: 1rem;
 	}
 
 	.logo-container img {
-		width: 7rem; /* ロゴのサイズを変更 */
+		width: 8rem;
 		height: auto;
 	}
 
 	nav {
-		flex: 1;
-		display: flex;
-		justify-content: center;
+		width: 100%;
+		margin-top: 4rem;
 	}
 
 	ul {
 		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
 
 	li {
-		margin: 0 1rem;
+		margin: 0.5rem;
 	}
 
 	li[aria-current='page'] a {
@@ -103,40 +96,48 @@
 		font-weight: 700;
 		text-transform: uppercase;
 		text-decoration: none;
-		padding: 0.5rem 0;
+		padding: 0.5rem;
 		transition: color 0.3s ease, border-bottom 0.3s ease;
+		font-size: 1rem;
 	}
 
 	nav a:hover {
 		color: var(--hover-text-color);
 	}
 
-	.action-buttons {
-		display: flex;
-		align-items: center;
-	}
+	@media (min-width: 768px) {
+		.header-container {
+			flex-direction: row;
+			justify-content: center;
+			padding: 1rem 0;
+		}
 
-	.btn {
-		background-color: var(--button-bg-color);
-		color: var(--button-text-color);
-		padding: 0.5rem 1rem;
-		text-decoration: none;
-		border-radius: 4px;
-		margin-left: 1rem;
-		transition: background-color 0.3s ease;
-	}
+		.logo-container {
+			position: absolute;
+			left: 1rem;
+			top: 50%;
+			transform: translateY(-50%);
+		}
 
-	.btn:hover {
-		background-color: var(--button-hover-bg-color);
-	}
+		.logo-container img {
+			width: 10rem;
+		}
 
-	.btn.login {
-		background-color: var(--hover-color);
-		color: var(--text-color);
-	}
+		nav {
+			width: auto;
+			margin-top: 0;
+		}
 
-	.btn.login:hover {
-		background-color: var(--hover-text-color);
-		color: var(--button-text-color);
+		ul {
+			flex-wrap: nowrap;
+		}
+
+		li {
+			margin: 0 1rem;
+		}
+
+		nav a {
+			font-size: 1.2rem;
+		}
 	}
 </style>

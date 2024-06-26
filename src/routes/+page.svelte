@@ -3,8 +3,9 @@
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png'
 	import './styles.css';
+	
 
-	//TODO: lpの作成
+
 </script>
 
 <svelte:head>
@@ -26,7 +27,7 @@
 			  
 			  <h1 class="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-12 md:text-6xl text-left break-words lg:w-full">プレゼン<br>支援ツール<br>"Presen+"</h1>
 
-			  <p class="mb-8 leading-relaxed text-gray-800 md:mb-12  xl:text-lg text-cleft break-words ">
+			  <p class="mb-8 leading-relaxed text-gray-800 md:mb-12  xl:text-lg text-left break-words lg:w-full ">
 				Presen+は、パスワード制のプレゼンルーム作成、<br>
 				リアルタイム質問・結果表示、<br>
 				コメントの投稿・消去・強調表示機能を提供。<br>
