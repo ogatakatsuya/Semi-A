@@ -1,8 +1,5 @@
 <script lang="ts">
-	import ResultsFeature from './ResultFeature.svelte';
-	import CommentFeature from './CommentFeature.svelte';
-	import PresenroomFeature from './sverdle/PresenroomFeature.svelte';
-	import Counter from './Counter.svelte';
+	import { features } from './feature.js';
 	import welcome from '$lib/images/svelte-welcome.webp';
 	import welcome_fallback from '$lib/images/svelte-welcome.png'
 	import './styles.css';
@@ -54,7 +51,7 @@
 	<div class="py-6 sm:py-8 lg:py-12">
 		<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 		  <div class="mb-6 flex items-end justify-between gap-4">
-			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~魅力的な３つの機能~</h2>
+			<h2 class="text-4xl mx-auto font-bold text-gray-800 lg:text-4xl">~魅力的な３つの機能~</h2>
 		  </div>
 	  
 		  <div class="grid gap-x-4 gap-y-6 sm:grid-cols-2 md:gap-x-6  lg:flex justify-center">
@@ -103,32 +100,23 @@
 	</div>
 
 
-<section class="py-6 sm:py-8 lg:py-12">
-	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-		<div class="mb-6 flex items-end justify-between gap-4">
-			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~機能~</h2>
-		</div>
+	<section class="py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+            <div class="mb-6 flex items-end justify-between gap-4">
+                <h2 class="text-4xl font-bold  mx-auto  text-gray-800 lg:text-4xl">~機能~</h2>
+            </div>
 
-		<section class = "feature" id="PresenroomFeature">
-			<h3>プレゼンルームの作成機能</h3>
-		    <h4>セキュアなプレゼン体験を</h4>
-			<a href="./about#PresenroomFeature">詳細はこちら</a>
-		</section>
-
-		<section class = "feature" id="ResultsFeature">
-			<h3>投票結果の表示機能</h3>
-            <h4>インタラクティブな投票結果の表示を</h4>
-			<a href="./about#ResultFeature">詳細はこちら</a>
-		</section>
-
-		<section class = "feature" id="CommentFeature">
-			<h3>コメント投稿・表示機能</h3>
-			<h4>ダイナミックなコメント機能を</h4>
-			<a href="./about#CommentFeature">詳細はこちら</a>
-		</section>
-
-	</div>
-</section>
+			<div class="flex flex-col items-center">
+				{#each features as feature}
+					<section class="feature max-w-prose text-center" id={feature.id}>
+						<h3 class="text-xl mx-auto font-semibold text-blue-700 mb-2">{feature.title}</h3>
+						<h4 class="text-xl  mx-auto font-semibold text-gray-700 mb-2">{feature.subtitle}</h4>
+						<a href={"./about#" + feature.id} class="text-indigo-600  mx-auto hover:underline">詳細はこちら</a>
+					</section>
+            	{/each}
+			</div>
+        </div>
+    </section>
 
 </div>
 <style>

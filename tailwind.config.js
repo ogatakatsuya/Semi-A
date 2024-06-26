@@ -4,9 +4,9 @@ export default {
   theme: {
     extend: {
       animation: {
-        fadeIn: 'fadeIn 1s ease-in forwards',
-        fadeOut: 'fadeOut 1s ease-in forwards',
-        slideIn: 'slideIn 1s ease-out forwards',
+        fadeIn: 'fadeIn 2s ease-in forwards',
+        fadeOut: 'fadeOut 2s ease-in forwards',
+        slideIn: 'slideIn 2s ease-out forwards',
       },
       keyframes: {
         fadeIn: {

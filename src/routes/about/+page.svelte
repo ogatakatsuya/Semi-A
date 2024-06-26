@@ -1,34 +1,30 @@
 <script lang="ts">
     import { onMount } from 'svelte';
-    import password from '$lib/images/password.jpg';
-    import graph from '$lib/images/graph.jpg';
-    import comment from '$lib/images/comment.jpg';
-    import ResultsFeature from '../ResultFeature.svelte';
-	import CommentFeature from '../CommentFeature.svelte';
-	import PresenroomFeature from '../sverdle/PresenroomFeature.svelte';
-    import ResultFeature from '../ResultFeature.svelte';
+    import { features } from '../feature.js';
 
     let elements = [];
 
-    onMount(() => {
-        elements.forEach(el => {
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-fadeIn');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-            observer.observe(el);
+onMount(() => {
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-fadeIn');
+                observer.unobserve(entry.target);
+            }
         });
     });
 
-    function registerElement(el) {
-        if (el) {
-            elements.push(el);
-        }
+    elements.forEach(el => {
+        observer.observe(el);
+    });
+});
+
+function registerElement(el) {
+    if (el) {
+        elements.push(el);
     }
+}
+
 </script>
 
 <svelte:head>
@@ -37,40 +33,36 @@
 </svelte:head>
 
 <section class="text-center py-16 bg-blue-100">
-    <h1 class="text-4xl font-bold mb-8 animate-slideIn">About Presen+</h1>
-    <p class="text-lg mb-16 animate-fadeIn">Presen+ is an interactive presentation tool designed to enhance audience engagement through real-time voting, comments, and results visualization.</p>
+    <h1 class="text-4xl font-bold mb-8 animate-slideIn">Presen+ 概要</h1>
+    <p class="text-lg mb-16 text-gray-700 leading-relaxed max-w-prose  m-auto animate-fadeIn">Presen+ はプレゼンターとオーディエンスによるインタラクティブな対話を可能にするためのツールです。リアルタイムな投票結果表示やコメント表示によりプレゼンを建設的なものにし、パスワードによる入室制限でセキュアで安心なプレゼン体験を提供します。</p>
 
     <h2 class="text-3xl font-bold mb-8 animate-slideIn">アプリのサービス機能</h2>
 
-    <div class="flex flex-wrap justify-around">
-        <div class="w-full sm:w-1/2 lg:w-1/3 p-4" id = "PresenroomFeature" use:registerElement>
-            <img src={password} alt="Secure Feature" class="mb-4 animate-fadeIn" />
-            <PresenroomFeature/>
-        </div>
-    
-        <div class="w-full sm:w-1/2 lg:w-1/3 p-4" id = "ResultFeature" use:registerElement>
-            <img src={graph} alt="Results Feature" class="mb-4 animate-fadeIn" />
-            <ResultFeature/>
-        </div>
-    
-        <div class="w-full sm:w-1/2 lg:w-1/3 p-4" id = "CommentFeature" use:registerElement>
-            <img src={comment} alt="Comment Feature" class="mb-4 animate-fadeIn" />
-            <CommentFeature/>
-        </div>
+    <div class="flex flex-col justify-around items-center">
+        {#each features as feature}
+            <div class="w-full sm:w-1/2 lg:w-1/3 p-4" id={feature.id} use:registerElement>
+                <img src={feature.image} alt={feature.title} class="mb-4 animate-fadeIn max-w-full h-auto" />
+                <h3 class="text-xl font-bold text-indigo-600 mb-2">{feature.title}</h3>
+                <h4 class="text-lg font-bold text-gray-600 mb-4">{feature.subtitle}</h4>
+                <div class = "text-gray-700">
+                    {@html feature.content}
+                </div>
+            </div>
+        {/each}
     </div>
+
     <div class="flex justify-center items-center mt-12">
         <a href="../create" class="inline-block rounded-lg bg-indigo-500 px-6 py-4 sm:px-12 sm:py-6 lg:px-20 lg:py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 text-xl sm:text-2xl lg:text-3xl">今すぐ体験</a>
     </div>
 </section>
 
 <style>
-  .animate-fadeIn {
-    @apply opacity-0;
-    animation: fadeIn 1s ease-in forwards;
-  }
-  .animate-slideIn {
-    @apply opacity-0;
-    animation: slideIn 1s ease-out forwards;
-  }
+    .animate-fadeIn {
+        @apply opacity-0;
+        animation: fadeIn 2s ease-in forwards;
+    }
+    .animate-slideIn {
+        @apply opacity-0;
+        animation: slideIn 2s ease-out forwards;
+    }
 </style>
-
