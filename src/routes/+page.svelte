@@ -1,7 +1,7 @@
 <script lang="ts">
-	import ResultsFeature from './ResultFeature.svelte';
-	import CommentFeature from './CommentFeature.svelte';
-	import PresenroomFeature from './sverdle/PresenroomFeature.svelte';
+	import { features } from './feature.js';
+	import welcome from '$lib/images/svelte-welcome.webp';
+	import welcome_fallback from '$lib/images/svelte-welcome.png'
 	import './styles.css';
 	
 
@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Real-Time Voting App</title>
+	<title>Presen+</title>
 	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
 </svelte:head>
 
@@ -39,9 +39,9 @@
 		</section>
 
 		<!--この下はボタン,,ボタンの上の余白消したいなあ-->
-		<section class="flex justify-center items-start  text-4xl" >
-		<div class="flex flex-col  sm:flex-row sm:justify-center lg:flex-row" >
-			<a href="/create" class="inline-block rounded-lg bg-indigo-500 px-20 py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"style="font-size: 30px;">今すぐ体験</a>
+		<section class="flex justify-center items-start  text-4xl mb-12" >
+			<div class="flex flex-col  sm:flex-row sm:justify-center lg:flex-row" >
+				<a href="/create" class="inline-block rounded-lg bg-indigo-500 px-20 py-10 text-center font-semibold text-white outline-none ring-indigo-300 transition duration-100 hover:bg-indigo-600 focus-visible:ring active:bg-indigo-700 md:text-base"style="font-size: 30px;">今すぐ体験</a>
 			</div>
 		</section>
 
@@ -52,7 +52,7 @@
 	<div class="py-6 sm:py-8 lg:py-12">
 		<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
 		  <div class="mb-6 flex items-end justify-between gap-4">
-			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~魅力的な３つの機能~</h2>
+			<h2 class="text-4xl mx-auto font-bold text-gray-800 lg:text-4xl">~魅力的な３つの機能~</h2>
 		  </div>
 	  
 		  <div class="grid gap-x-4 gap-y-6 sm:grid-cols-2 md:gap-x-6  lg:flex justify-center">
@@ -80,8 +80,8 @@
 				<div class="flex flex-col">
 					<span class="text-lg text-gray-500 text-center">その２</span>
 					<a href="#ResultsFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>質問・結果表示</a>
-				  </div>
-			  </div>
+				</div>
+			</div>
 			  <!-- product - end -->
 	  
 			<!-- product - start -->
@@ -94,33 +94,30 @@
 				  <span class="text-lg text-gray-500 text-center">その３</span>
 				  <a href="#CommentFeature" class="text-lg font-bold text-gray-800 text-center transition duration-100 hover:text-gray-500 lg:text-2xl break-words">リアルタイム<br>コメント投稿・表示</a>
 				</div>
-			  </div>
+			</div>
 			  <!-- product - end -->
 		  </div>
 		</div>
-	  </div>
-
-
-<section class="py-6 sm:py-8 lg:py-12">
-	<div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-		<div class="mb-6 flex items-end justify-between gap-4">
-			<h2 class="text-4xl font-bold text-gray-800 lg:text-4xl">~機能詳細~</h2>
-		</div>
-
-		<section id="PresenroomFeature">
-			<PresenroomFeature/>
-		</section>
-
-		<section id="ResultsFeature">
-			<ResultsFeature/> 
-		</section>
-
-		<section id="CommentFeature">
-			<CommentFeature />
-		</section>
-
 	</div>
-</section>
+
+
+	<section class="py-6 sm:py-8 lg:py-12">
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+            <div class="mb-6 flex items-end justify-between gap-4">
+                <h2 class="text-4xl font-bold  mx-auto  text-gray-800 lg:text-4xl">~機能~</h2>
+            </div>
+
+			<div class="flex flex-col items-center">
+				{#each features as feature}
+					<section class="feature max-w-prose text-center" id={feature.id}>
+						<h3 class="text-xl mx-auto font-semibold text-blue-700 mb-2">{feature.title}</h3>
+						<h4 class="text-xl  mx-auto font-semibold text-gray-700 mb-2">{feature.subtitle}</h4>
+						<a href={"./about#" + feature.id} class="text-indigo-600  mx-auto hover:underline">詳細はこちら</a>
+					</section>
+            	{/each}
+			</div>
+        </div>
+    </section>
 
 </div>
 <style>
@@ -156,7 +153,18 @@
 		top: 0;
 		display: block;
 	}
+	.feature {
+		margin-bottom: 1.5rem;
+	}
 
-	
-	
+	.feature h3 {
+		font-size: 1.75rem;
+		color: #0056b3;
+		font-weight: bolder;
+	}
+
+    .feature h4 {
+		font-size: 1.25rem;
+		color: #000;
+	}
 </style>
