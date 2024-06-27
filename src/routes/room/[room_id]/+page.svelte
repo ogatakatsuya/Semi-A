@@ -1,28 +1,23 @@
 <script lang="ts">
 	import {
-		doc,
 		addDoc,
-		updateDoc,
 		collection,
-        onSnapshot,
-        query,
-        QuerySnapshot,
+        waitForPendingWrites,
 	} from "firebase/firestore";
 	import { db } from "$lib/firebase";
 	import { page } from "$app/stores";
 	import { createForm } from 'felte';
 	import { validateSchema, validator } from '@felte/validator-yup';
 	import * as yup from 'yup';
+    import { validatePassword } from "firebase/auth";
+    import { ssrModuleExportsKey } from "vite/runtime";
     import { tick } from "svelte";
 
 	let text: string = "";
+	let room_id: string = "";
 	let time: Date;
-	let Message: string = "";
-	let chosen: number;
-	let disabled: string = "";
-	
-	// Reactive assignment
-    const room_id: string = $page.params.room_id;
+
+	$: room_id = $page.params.room_id;
 
 	const schema = yup.object({
 		comment: yup.string().required(),
@@ -38,20 +33,12 @@
 		room_id: string;
 		time: Date;
 	}
-    type Question = {
-        id?: string;
-        text: string;
-        options: Array;
-		results: Array;
-		open: boolean;
-    }
-    let questions: Question[] = [];
 
 	const addComment = async () => {
 		time = new Date();
 		setFields( {comment: text} );
-		const validationResult = await validate();
-		if(validationResult){
+		await validate();
+		if( $isValid ){
 			const comment: Comment = {
 				text : text,
 				room_id : room_id,
@@ -60,41 +47,6 @@
 			try {
 				const docRef = await addDoc(collection(db, `Rooms/${room_id}/Comments`), comment);
 				text = "";
-			} catch (e) {
-				console.error("Error adding document: ", e);
-			}
-		}
-	}
-    onSnapshot(
-        query(collection(db, `/Rooms/${room_id}/Questions`)),
-        (snapshot: QuerySnapshot) => {
-            questions = snapshot.docs.map((doc) => {
-                const data = doc.data();
-                const item: Question = {
-                    id: doc.id,
-                    text: data.text,
-                    //options_key: Object.keys(data.options),
-					//options_value: Object.values(data.options),
-					options: data.options,
-					results: data.results,
-					open: true,
-                };
-                return item;
-            });
-        }
-    );
-	const vote = (question_id: string, q_index: number) => {
-		if (chosen === undefined) {
-			Message = "答えを選択してください．";
-		} else { 
-			Message = "";
-			let cnt = questions[q_index]["results"][chosen];
-			let renew = questions[q_index]["results"];
-			renew[chosen] = ++cnt;
-			try {
-				const docRef = updateDoc(doc(db, `Rooms/${room_id}/Questions`, `${question_id}`), {"results": renew});//{options: renew}
-				disabled = "disabled";
-				Message = "投票完了";
 			} catch (e) {
 				console.error("Error adding document: ", e);
 			}
@@ -109,28 +61,6 @@
 
 <div class="text-column">
 	<h1 class="mb-4">Dynamic routing with Room ID</h1>
-	<div class="font-bold">Questions accepting answer</div>
-	<ul>
-		{#each questions as question, q_index}
-		{#if question.open}
-			<h2>
-				Question : {question.text}
-			</h2>
-			<div>
-				{#each question.options as option, index}
-				<label class="block"><input type="radio" name="{question.id}" value={index} bind:group={chosen} {disabled}> {option} </label>
-				{/each}
-			</div>
-			<div class="text-sm text-red-600" style="padding-bottom: 20px; visibility: {Message ? "visible" : "hidden"}">{Message}</div>
-			<button on:click={() => vote(question.id, q_index)} {disabled}
-				class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-			>
-				Vote
-			</button>
-		{/if}
-		{/each}
-	</ul>
-	
 	<form use:form on:submit|preventDefault = {addComment}>
 		<div class="relative">
 			<input bind:value={text} type="comment" name="comment" id="comment" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Input comment" />
