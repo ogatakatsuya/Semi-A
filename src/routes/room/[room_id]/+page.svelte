@@ -13,7 +13,7 @@
     import * as yup from 'yup';
     import { tick } from "svelte";
 
-    let text: string = "";
+    let text = "";
 	let time: Date;
 
     // Reactive assignment
