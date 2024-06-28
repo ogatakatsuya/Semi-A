@@ -65,7 +65,7 @@
 	}
 
 	.logo-container img {
-		width: 2rem; /* ロゴのサイズをLoginボタンに合わせて小さく */
+		width: 8rem;
 		height: auto;
 	}
 
