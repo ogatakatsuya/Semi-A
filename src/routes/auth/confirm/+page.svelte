@@ -1,4 +1,5 @@
 <script lang="ts">
+	const value : number = 0;
     // import { sendEmailVerification } from "firebase/auth";
 
 	// const resendVerificationEmail = async () => {
