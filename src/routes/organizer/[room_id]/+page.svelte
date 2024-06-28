@@ -23,6 +23,7 @@
 		id?: string;
 		text: string;
 		options: string[];
+		results: number[];
 	}
 
 	let commentList: Comment[] = [];
@@ -30,25 +31,30 @@
 	let question = '';
 	let showModal = false;
 	let options = [''];
+	let results = [0];
 
 	function addOption() {
 		options = [...options, ''];
+		results = [...results, 0];
 	}
 
 	function removeOption(index: number) {
         options = options.filter((_, i) => i !== index);
+		results = results.filter((_, i) => i !== index);
     }
 
 	const addQuestion = async () => {
 		const questionData: Question = {
 			text: question,
 			options: options,
+			results: results,
 		};
 		try {
 			await addDoc(collection(db, `Rooms/${room_id}/Questions`), questionData);
 			showModal = false;
 			question = '';
 			options = [''];
+			results = [0];
 		} catch (e) {
 			console.error("Error adding document: ", e);
 		}
@@ -92,7 +98,7 @@
 	<button 
 	type="submit" 
 	on:click={() => showModal = true}
-	class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+	class="z-10 mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 		Let's discussion!
 	</button>
 	{#if showModal}
