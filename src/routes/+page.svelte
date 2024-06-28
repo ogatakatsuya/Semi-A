@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './styles.css';
 	import Header from './Header.svelte';
-
-
 </script>
 
 <svelte:head>
