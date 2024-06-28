@@ -24,13 +24,13 @@
 	// Reactive assignment
     const room_id: string = $page.params.room_id;
 
-	const schema = yup.object({
-		comment: yup.string().required(),
-	});
+    const schema = yup.object({
+        comment: yup.string().required("Comment is required"),
+    });
 
-	const { form, errors, isValid, setFields, validate } = createForm<yup.InferType<typeof schema>>({
-		extend: validator({ schema }),
-	});
+    const { form, errors, isValid, setFields, validate } = createForm<yup.InferType<typeof schema>>({
+        extend: validator({ schema }),
+    });
 
 	type Comment = {
 		id?: string;
@@ -103,8 +103,8 @@
 </script>
 
 <svelte:head>
-	<title>Audience Room</title>
-	<meta name="description" content="About this app" />
+    <title>Audience Room</title>
+    <meta name="description" content="About this app" />
 </svelte:head>
 
 <div class="text-column">
