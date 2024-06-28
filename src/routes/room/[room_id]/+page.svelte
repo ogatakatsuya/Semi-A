@@ -43,7 +43,6 @@
         text: string;
         options: Array;
 		results: Array;
-		open: boolean;
     }
     let questions: Question[] = [];
 
@@ -75,7 +74,6 @@
                     text: data.text,
 					options: data.options,
 					results: data.results,
-					open: true,
                 };
                 return item;
             });
@@ -110,7 +108,6 @@
 	<div class="mx-auto max-w-lg my-4">
 		<div class="divide-y divide-gray-100">
 		{#each questions as question, q_index}
-		{#if question.open}
 		<details class="group rounded-lg bg-gray-50 border border-gray-300 my-2">
 			<summary class="flex cursor-pointer list-none items-center justify-between p-4 pl-6 font-noto font-medium text-secondary-900">
 				{question.text}
@@ -135,7 +132,6 @@
 			</button>
 			</div>
 		</details>
-		{/if}
 		{/each}
 		</div>
 	</div>
