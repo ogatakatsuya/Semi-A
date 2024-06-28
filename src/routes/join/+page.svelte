@@ -52,10 +52,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Join</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
+
 
 <h1 class="mb-6 text-lg font-bold">Let's join presentation room!</h1>
 <div class="flex gap-5 max-w-none flex-wrap justify-center ">

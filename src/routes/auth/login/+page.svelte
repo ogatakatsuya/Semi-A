@@ -44,10 +44,7 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Login</title>
-	<meta name="description" content="About this app" />
-</svelte:head>
+
 
 <section class="text-column">
 	<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">

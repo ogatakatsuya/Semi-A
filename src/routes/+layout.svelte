@@ -3,12 +3,14 @@
 	import Footer from './Footer.svelte';
 	import './styles.css';
 	import "../app.css";
+	import fabicon from '$lib/images/fabicon.ico'
 	//TODO　layout.svelteをオリジナルのものに
 </script>
 
 <svelte:head>
-	<title>Real-Time Voting App</title>
+	<title>Presen+</title>
 	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
+	<link rel="icon" href={fabicon} />
 </svelte:head>
 
 <div class="app">

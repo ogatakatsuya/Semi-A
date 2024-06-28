@@ -1,13 +1,14 @@
 <script lang="ts">
 	import './styles.css';
 	import Header from './Header.svelte';
-
+	import fabicon from '$lib/images/fabicon.ico'
 
 </script>
 
 <svelte:head>
 	<title>Presen+</title>
 	<meta name="description" content="Engage your audience in real-time with our interactive voting app. Create voting rooms, restrict access with passwords, and visualize results with ease." />
+	<link rel="icon" href={fabicon} />
 </svelte:head>
 
 <!-- New rectangle section - start -->
