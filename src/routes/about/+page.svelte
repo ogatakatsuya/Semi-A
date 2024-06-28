@@ -27,10 +27,7 @@ function registerElement(el) {
 
 </script>
 
-<svelte:head>
-  <title>About Presen+</title>
-  <meta name="description" content="Learn  more about Presen+, the interactive presentation tool that enhances audience engagement with real-time voting, comments, and results visualization." />
-</svelte:head>
+
 
 <section class="text-center py-16 bg-blue-100">
     <h1 class="text-4xl font-bold mb-8 animate-slideIn">Presen+ 概要</h1>
