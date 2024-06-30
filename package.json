@@ -31,6 +31,7 @@
 		"@fontsource-variable/noto-sans-jp": "^5.0.19",
 		"felte": "^1.2.14",
 		"firebase": "^10.12.2",
-		"firebase-tools": "^13.11.2"
+		"firebase-tools": "^13.11.2",
+		"svelte-pdf": "^1.0.20"
 	}
 }
