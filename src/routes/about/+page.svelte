@@ -29,7 +29,7 @@ function registerElement(el) {
 
 
 
-<section class="text-center py-16 bg-blue-100">
+<section class="text-center py-16">
     <h1 class="text-4xl font-bold mb-8 animate-slideIn">Presen+ 概要</h1>
     <p class="text-lg mb-16 text-gray-700 leading-relaxed max-w-prose  m-auto animate-fadeIn">Presen+ はプレゼンターとオーディエンスによるインタラクティブな対話を可能にするためのツールです。リアルタイムな投票結果表示やコメント表示によりプレゼンを建設的なものにし、パスワードによる入室制限でセキュアで安心なプレゼン体験を提供します。</p>
 
@@ -37,12 +37,14 @@ function registerElement(el) {
 
     <div class="flex flex-col justify-around items-center">
         {#each features as feature}
-            <div class="w-full sm:w-1/2 lg:w-1/3 p-4" id={feature.id} use:registerElement>
-                <img src={feature.image} alt={feature.title} class="mb-4 animate-fadeIn max-w-full h-auto" />
-                <h3 class="text-xl font-bold text-indigo-600 mb-2">{feature.title}</h3>
-                <h4 class="text-lg font-bold text-gray-600 mb-4">{feature.subtitle}</h4>
-                <div class = "text-gray-700">
-                    {@html feature.content}
+            <div class="flex flex-col lg:flex-row items-center w-full sm:w-1/2 lg:w-2/3 p-4" id={feature.id} use:registerElement>
+                <img src={feature.image} alt={feature.title} class="mb-4 animate-fadeIn max-w-full h-auto lg:w-1/2 lg:mr-4" />
+                <div class="lg:w-1/2">
+                    <h3 class="text-xl font-bold text-indigo-600 mb-2">{feature.title}</h3>
+                    <h4 class="text-lg font-bold text-gray-600 mb-4">{feature.subtitle}</h4>
+                    <div class = "text-gray-700">
+                        {@html feature.content}
+                    </div>    
                 </div>
             </div>
         {/each}
