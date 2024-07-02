@@ -26,6 +26,7 @@
 		text: string;
 		options: string[];
 		results: number[];
+		open: boolean;
 	}
 
 	let commentList: Comment[] = [];
@@ -50,6 +51,7 @@
 			text: question,
 			options: options,
 			results: results,
+			open: true,
 		};
 		try {
 			await addDoc(collection(db, `Rooms/${room_id}/Questions`), questionData);
@@ -97,7 +99,7 @@
 				<FlowingComment text={comment.text}/>
 			{/if}
 		{/each}
-		</div>
+	</div>
 	<button 
 	type="submit" 
 	on:click={() => showModal = true}
