@@ -10,6 +10,8 @@
 	import { page } from "$app/stores";
 	import Modal from "./_components/Modal.svelte";
 	import FlowingComment from './_components/FlowingComment.svelte';
+	import PdfViewer from "./_components/Pdf.svelte";
+	import CloseButton from "./_components/CloseButton.svelte";
 
 	type Comment = {
 		id: string;
@@ -87,7 +89,8 @@
 </svelte:head>
 
 <div class="text-column">
-	<h1 class="mb-4">Dynamic routing with Room ID</h1>
+	<CloseButton />
+	<PdfViewer />
 	<div class="w-full absolute overflow-x-hidden inset-y-20 inset-x-0">
 		{#each commentList as comment (comment.id)}
 			{#if !comment.past}
@@ -98,7 +101,7 @@
 	<button 
 	type="submit" 
 	on:click={() => showModal = true}
-	class="z-10 mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+	class="z-10 m-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
 		Let's discussion!
 	</button>
 	{#if showModal}
@@ -134,7 +137,7 @@
         
         <button 
 			on:click={addQuestion}
-            class="mb-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
             Submit
         </button>

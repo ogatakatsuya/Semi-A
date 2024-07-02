@@ -57,6 +57,7 @@
 <h1 class="mb-6 text-lg font-bold">Let's join presentation room!</h1>
 <div class="flex gap-5 max-w-none flex-wrap justify-center ">
 	{#each roomList as room}
+		{#if room.exist}
 		<div class="flex sm:w-72 w-4/5 sm:flex-col flex-row overflow-hidden rounded-lg shadow-lg">
 			<div class="hidden sm:block flex-shrink-0">
 				<img class="object-cover sm:w-full sm:h-48 w-24 h-full" src="{neon1}" alt="">
@@ -97,6 +98,7 @@
 					Submit
 				</button>
 			</Modal>
+		{/if}
 		{/if}
 	{/each}
 </div>

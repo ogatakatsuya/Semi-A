@@ -28,7 +28,7 @@
 </script>
 
 {#if !($l==0 && $x==-100)}
-	<div class="absolute whitespace-nowrap text-2xl font-noto text-shadow-{shadow}" style="top:{t}%; left:{$l}%; transform:translateX({$x}%); color:{color}; font-weight:{weight};" on:click={highlight}>
+	<div class="z-20 absolute whitespace-nowrap text-2xl font-noto text-shadow-{shadow}" style="top:{t}%; left:{$l}%; transform:translateX({$x}%); color:{color}; font-weight:{weight};" on:click={highlight}>
 		{text}
 	</div>
 {/if}

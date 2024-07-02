@@ -1,6 +1,9 @@
 {
 	"name": "semi-a",
 	"version": "0.0.1",
+	"main": "dist/index.js",
+	"module": "dist/index.js",
+	"svelte": "dist/index.js",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
@@ -31,6 +34,7 @@
 		"@fontsource-variable/noto-sans-jp": "^5.0.19",
 		"felte": "^1.2.14",
 		"firebase": "^10.12.2",
-		"firebase-tools": "^13.11.2"
+		"firebase-tools": "^13.11.2",
+		"svelte-pdf": "^1.0.20"
 	}
 }
